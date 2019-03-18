@@ -1,11 +1,11 @@
 const List = props => (
     <ul className="ul">
-      {props.items.length > 0 ? (
-          props.items.map((item, index) => (
+      {props.todoList.length > 0 ? (
+          props.todoList.map((todoList, index) => (
             <div className="card" key={index}>
                 <li>
-                    <p className="todo-title">{item}</p>
-                    <span className="action-btn" onClick={() => { props.removeTodo(item, index)}} key={index}>Done</span>
+                    <p className="todo-title">{todoList}</p>
+                    <span className="action-btn" onClick={() => { props.removeTodo(todoList, index)}} key={index}>Done</span>
                 </li>
             </div>
 
