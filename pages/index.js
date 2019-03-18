@@ -5,14 +5,14 @@ import Layout from '../components/Layout';
 
 class Index extends React.Component {
 
-    /* static async getInitialProps(){
+    static async getInitialProps(){
         const res = await fetch('http://localhost:3000/api/data')
         const initialTodotodoList = await res.json()
 
         console.log(`Show data fetched. Count: ${initialTodotodoList.length}`)
 
         return { initialTodotodoList}
-    } */
+    } 
 
  
 
@@ -20,22 +20,21 @@ class Index extends React.Component {
       super(props);
       this.state = {
         todoItem: '',
-        todoList: [],
-        error: null,
-        isLoaded: false
+        todoList: props.initialTodotodoList,
+        error: null
       };
       this.removeTodo = this.removeTodo.bind(this);
     }
      
 
-    componentDidMount() {
+/*     componentDidMount() {
         fetch('http://localhost:3000/api/data')
           .then(res => res.json())
           .then(
               (result) => { this.setState({  isLoaded: true, todoList: result });},
               (error) => { this.setState({ isLoaded: true, error });}
             )
-      }
+      } */
 
     onChange = (event) => {
         this.setState({ todoItem: event.target.value });
@@ -59,12 +58,11 @@ class Index extends React.Component {
     render() {
 
 
-        const {todoItem, todoList, error, isLoaded} = this.state;
+        const {todoItem, todoList, error} = this.state;
         if (error)
             return (<Layout><div>Error: {error.message}</div></Layout>)
-        else if(!isLoaded)
-            return (<Layout><div>Loading...</div></Layout>)
         else
+        
         
         return (
             
