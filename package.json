@@ -1,26 +1,28 @@
 {
   "name": "react-todo",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Todo List React Application Built for Enye Tech Cohort 2",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tosinamuda/react-todo.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Tosin Amuda",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/tosinamuda/react-todo/issues"
   },
   "homepage": "https://github.com/tosinamuda/react-todo#readme",
   "dependencies": {
+    "express": "^4.16.4",
+    "isomorphic-unfetch": "^3.0.0",
     "next": "^8.0.3",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"

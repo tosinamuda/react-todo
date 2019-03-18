@@ -1,13 +1,26 @@
 import React from 'react'
 import List from '../components/List'
-
+import fetch from 'isomorphic-unfetch'
 
 class Index extends React.Component {
+    static async getInitialProps(){
+        const res = await fetch('http://localhost:3000/api/data')
+        const initialData = await res.json()
+
+        console.log(`Show data fetched. Count: ${initialData.length}`)
+
+
+        return {
+
+            initialTodo: initialData
+        }
+    }
+
     constructor(props) {
       super(props);
       this.state = {
         term: '',
-        items: []
+        items: props.initialTodo
       };
       this.removeTodo = this.removeTodo.bind(this);
     }
@@ -25,8 +38,8 @@ class Index extends React.Component {
       }
 
       removeTodo(name, i){
-          let items = this.state.items.slice();
-          items.splice(i, 1);
+          let items = this.state.items.slice(); //return a new copy of the Array
+          items.splice(i, 1); //Remove item at index i;
           this.setState({items});
     }
   
